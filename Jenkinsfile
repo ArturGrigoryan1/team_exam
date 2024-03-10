@@ -34,11 +34,18 @@ pipeline {
                 }
                 
             }
+            
             steps {
                 echo 'ok'
                 sh 'python3 main.py'
             }
         }
-        
+        stage('orinak') {
+            agent { dockerfile true }
+            }
+            steps {
+                sh 'python --version'
+            }
+        }
 }
 }
