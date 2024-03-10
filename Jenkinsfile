@@ -12,7 +12,7 @@ pipeline {
      causeString: 'Triggered on $base',
      token: 'abc123',
      tokenCredentialId: '' )
-  }
+    }
     stages {
         stage('Check branch name') {
             steps {
@@ -22,36 +22,33 @@ pipeline {
                 echo env.sender
                 echo env.recipient
                 sh 'ls -la'
-                
             }
         }
         
-        stage('build Dockerimage') {
-            steps{
+   //     stage('build Dockerimage') {
+   //         steps{
+   //             script {
+   //                 myimage = docker.build('myimage')
+   //                 sh 'docker run -t --rm myimage'
+   //             }
+   //         }
+   //     }
+        
+        stage('check merge and run docker') {
+            when {
+                allOf {
+                    environment name: 'action', value: 'closed'
+                    environment name: 'sender', value: 'staging'
+                    environment name: 'recipient', value: 'main'
+                }   
+            }
+            steps {
                 script {
                     myimage = docker.build('myimage')
                     sh 'docker run -t --rm myimage'
                 }
             }
         }
-        
-        stage('check merge') {
-            when {
-                allOf {
-                    environment name: 'action', value: 'closed'
-                    environment name: 'sender', value: 'staging'
-                    environment name: 'recipient', value: 'main'
-                }
-                
-            }
-            
-            steps {
-                echo 'okay'
-                sh 'python3 main.py'
-            }
-        }
        
-        
-        
-}
+    }
 }
