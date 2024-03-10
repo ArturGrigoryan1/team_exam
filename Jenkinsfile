@@ -31,7 +31,8 @@ pipeline {
                 script {
                     myimage = docker.build('myimage')
                     sh 'docker images'
-                    sh 'docker run -t myimage'
+                    docker.myimage.run('-t')
+                    //sh 'docker run -t myimage'
                 }
             }
         }
