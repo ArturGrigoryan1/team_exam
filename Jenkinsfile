@@ -28,10 +28,8 @@ pipeline {
         
         stage('build Dockerimage') {
             steps{
-                script {
-                    def myimage = docker.build('myimage')
-                    myimage.withRun['-it']
-                }
+                myimage = docker.build('myimage')
+                myimage.run(-it)
             }
         }
         
