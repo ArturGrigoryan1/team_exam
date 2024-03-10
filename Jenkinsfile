@@ -24,16 +24,6 @@ pipeline {
                 sh 'ls -la'
             }
         }
-        
-   //     stage('build Dockerimage') {
-   //         steps{
-   //             script {
-   //                 myimage = docker.build('myimage')
-   //                 sh 'docker run -t --rm myimage'
-   //             }
-   //         }
-   //     }
-        
         stage('check merge and run docker') {
             when {
                 allOf {
