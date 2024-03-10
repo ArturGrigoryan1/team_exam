@@ -30,7 +30,7 @@ pipeline {
                 allOf {
                     environment name: 'action', value: 'closed'
                //     env.sender == staging
-               //     env.recipient == main
+                    environment name: 'recipient', value: 'main'
                 }
                 
             }
