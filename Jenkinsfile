@@ -45,7 +45,7 @@ pipeline {
             }
             
             steps {
-                echo 'ok'
+                echo 'okay'
                 sh 'python3 main.py'
             }
         }
