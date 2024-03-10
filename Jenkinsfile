@@ -30,7 +30,7 @@ pipeline {
             steps{
                 script {
                     def myimage = docker.build('myimage')
-                    myimage.inside{
+                    myimage.run{
                         //sh 'python --version'
                     }
                 }
