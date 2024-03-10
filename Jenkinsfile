@@ -46,6 +46,7 @@ pipeline {
             steps {
                 sh 'python --version'
             }
+        }
       //  node {
           //  checkout scm
 
