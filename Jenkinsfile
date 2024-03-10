@@ -30,9 +30,7 @@ pipeline {
             steps{
                 script {
                     myimage = docker.build('myimage')
-                    sh 'docker images'
-                    docker.myimage.run('-t')
-                    //sh 'docker run -t myimage'
+                    sh 'docker run -t --rm myimage'
                 }
             }
         }
