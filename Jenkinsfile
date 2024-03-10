@@ -40,15 +40,21 @@ pipeline {
                 sh 'python3 main.py'
             }
         }
-        node {
-            checkout scm
+        stage('orinak') {
+            docker.build("my-image-name")
 
-            def customImage = docker.build("my-image")
+            steps {
+                sh 'python --version'
+            }
+      //  node {
+          //  checkout scm
+
+          //  def customImage = docker.build("my-image")
 
           //  customImage.inside {
           //      sh 'make test'
           //  }
-        }
+       // }
         
 }
 }
