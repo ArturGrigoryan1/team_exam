@@ -1,2 +1,2 @@
 # team_exam
-ok
+o
