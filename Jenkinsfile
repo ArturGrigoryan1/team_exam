@@ -29,7 +29,10 @@ pipeline {
         stage('build Dockerimage') {
             steps{
                 script {
-                    def apitestimage = docker.build('apitestimage')
+                    def myimage = docker.build('myimage')
+                    myimage.inside{
+                        sh 'python --version'
+                    }
                 }
             }
         }
