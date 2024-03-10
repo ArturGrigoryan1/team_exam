@@ -28,9 +28,9 @@ pipeline {
         stage('check merge') {
             when {
                 allOf {
-                    env.action == closed
+                    environment name: 'action', value: 'closed'
                //     env.sender == staging
-                    env.recipient == main
+               //     env.recipient == main
                 }
                 
             }
