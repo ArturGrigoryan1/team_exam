@@ -22,9 +22,18 @@ pipeline {
                 echo env.sender
                 echo env.recipient
                 sh 'ls -la'
-                docker.build("my-image-name")
+                
             }
         }
+        
+        stage('build Dockerimage') {
+            steps{
+                script {
+                    def apitestimage = docker.build('apitestimage', '--no-cache=true dockerbuild')
+                }
+            }
+        }
+        
         stage('check merge') {
             when {
                 allOf {
