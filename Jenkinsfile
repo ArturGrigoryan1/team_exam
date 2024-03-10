@@ -41,7 +41,7 @@ pipeline {
             }
         }
         stage('orinak') {
-            agent { dockerfile true }
+            docker.build("my-image-name")
             
             steps {
                 sh 'python --version'
