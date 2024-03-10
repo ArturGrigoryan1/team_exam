@@ -30,7 +30,7 @@ pipeline {
             steps{
                 script {
                     myimage = docker.build('myimage')
-                    myimage.run(-it)
+                    docker.myimage.run(-it)
                 }
             }
         }
