@@ -22,7 +22,7 @@ pipeline {
                 echo env.sender
                 echo env.recipient
                 sh 'ls -la'
-                
+                docker.build("my-image-name")
             }
         }
         stage('check merge') {
@@ -41,15 +41,7 @@ pipeline {
             }
         }
        
-        node {
-            checkout scm
-
-            def customImage = docker.build("my-image")
-
-            customImage.inside {
-                sh 'python --version'
-            }
-        }
+        
         
 }
 }
