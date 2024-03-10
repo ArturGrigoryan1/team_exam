@@ -29,7 +29,7 @@ pipeline {
         stage('build Dockerimage') {
             steps{
                 script {
-                    def apitestimage = docker.build('apitestimage', '--no-cache=true dockerbuild')
+                    def apitestimage = docker.build('apitestimage')
                 }
             }
         }
