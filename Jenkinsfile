@@ -25,17 +25,20 @@ pipeline {
                 
             }
         }
-      //  stage('check merge') {
-      //      when {
-      //          allOf {
-                    
-      //          }
+        stage('check merge') {
+            when {
+                allOf {
+                    env.action == closed
+               //     env.sender == staging
+                    env.recipient == main
+                }
                 
-      //      }
-      //      steps {
+            }
+            steps {
+                echo 'ok'
                 
-      //      }
-      //  }
+            }
+        }
         
 }
 }
